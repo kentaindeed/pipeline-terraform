@@ -35,7 +35,12 @@ resource "aws_codebuild_project" "codebuild" {
     service_role = aws_iam_role.codebuild.arn
 
   artifacts {
-    type = "NO_ARTIFACTS"
+    type     = "S3"
+    location = var.artifact_bucket
+    path     = "builds"
+    packaging = "ZIP"
+    name     = "${local.name_prefix}-build.zip"
+    encryption_disabled = false
   }
 
   environment {

@@ -1,3 +1,7 @@
+---
+inclusion: always
+---
+
 # Terraform設定変更ポリシー
 
 ## 重要なルール
