@@ -3,11 +3,11 @@
 
 terraform {
   backend "s3" {
-    bucket         = "prod-tfstate-pipeline-bucket"
-    key            = "prod/terraform.tfstate"
-    region         = "ap-northeast-1"
-    encrypt        = true
-    
+    bucket  = "prod-tfstate-pipeline-bucket"
+    key     = "prod/terraform.tfstate"
+    region  = "ap-northeast-1"
+    encrypt = true
+
     # オプション: プロファイルを指定する場合
     # profile = "default"
   }
@@ -15,7 +15,7 @@ terraform {
 
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "prod-tfstate-pipeline-bucket"
-  
+
   tags = {
     Name        = "Terraform State Bucket"
     Environment = "prod"
@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "terraform_state" {
 # バージョニング有効化
 resource "aws_s3_bucket_versioning" "terraform_state" {
   bucket = aws_s3_bucket.terraform_state.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
