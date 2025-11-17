@@ -21,3 +21,11 @@ module  "codedeploy" {
   source = "../../modules/codedeploy"
   env    = var.env
 }
+
+module "codepipeline" {
+  source              = "../../modules/codepipeline"
+  env                 = var.env
+  github_repo          = var.github_repo
+  github_owner         = var.github_owner
+  
+}
